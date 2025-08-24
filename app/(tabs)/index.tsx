@@ -1,6 +1,12 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
+
+
+
 
 export default function HomeScreen() {
+
+
   return (
     <View style={styles.body}>
       {/* Map section */}
@@ -15,18 +21,35 @@ export default function HomeScreen() {
           <View style={styles.leftSide}>
             {/* First row: time + avg speed */}
             <View style={styles.firstRow}>
-              <Text style={styles.time}>2:23:30</Text>
-              <Text style={styles.speed}>12km/h</Text>
+              <View style={styles.timebox}>
+
+              <Text style={[styles.time, ]}>2:23:30</Text>
+              <View style={{display:'flex', flexDirection:"row", alignItems:'baseline'}}>
+              <Text style={styles.speed}>12</Text>
+              <Text style={[styles.speed, {opacity:0.6, fontSize:16}]}>Km/h</Text>
+
+              </View>
+              </View>
             </View>
 
             {/* Second row: distance + top speed */}
             <View style={styles.secondRow}>
               <View style={styles.statBoxRed}>
-                <Text style={styles.statValue}>19.6km</Text>
+                <View style={{display:'flex', flexDirection:'row', alignItems:'baseline'}}>
+
+                <Text style={styles.statValue}>19.6</Text>
+                <Text style={[styles.statValue, {opacity:0.8, fontSize:14}]}>km</Text>
+
+                </View>
                 <Text style={styles.statLabel}>distance</Text>
               </View>
               <View style={styles.statBoxGrey}>
-                <Text style={styles.statValue}>34km/h</Text>
+                <View style={{display:'flex', flexDirection:'row', alignItems:'baseline'}}>
+
+                  <Text style={styles.statValue}>34</Text>
+                  <Text style={[styles.statValue, {opacity:0.6, fontSize:16, fontWeight:'600'}]}>km/h</Text>
+
+                </View>
                 <Text style={styles.statLabel}>top speed</Text>
               </View>
             </View>
@@ -34,11 +57,8 @@ export default function HomeScreen() {
 
           {/* RIGHT SIDE (Pause button) */}
           <TouchableOpacity style={styles.rightSide}>
-            {/* <TouchableOpacity style={styles.pauseBtn}>
-              <Text style={styles.pauseIcon}>⏸</Text>
-            </TouchableOpacity> */}
-            <Text>he</Text>
-            
+
+           <Image source={require('../../assets/images/pause.png')} style={{ width: 40, height: 40 }} />            
           </TouchableOpacity>
         </View>
       </View>
@@ -47,9 +67,16 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  timebox: {
+    paddingVertical: 18,
+    paddingHorizontal:12,
+    backgroundColor: '#505050',
+    borderRadius: 8,
+  },
   body: {
     flex: 1,
     backgroundColor: "black",
+    fontFamily:""
   },
   map: {
     flex: 1,
@@ -62,63 +89,75 @@ const styles = StyleSheet.create({
     backgroundColor: "#222",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+    borderColor:'#505050',
+    borderWidth:2,
+    borderBottomWidth:0
   },
   container: {
     flexDirection: "row"
   },
   leftSide: {
-    flex: 2,
-    backgroundColor:'blue'
+    flex: 0.8,
   },
   firstRow: {
-    marginBottom: 16,
+    marginBottom: 12,
   },
   secondRow: {
     flexDirection: "row",
     gap: 12,
   },
   rightSide: {
-    marginLeft: 16,
+    marginLeft: 12,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor:'yellow',
+    backgroundColor:'#DB3552',
+    borderRadius: 8,
+    paddingVertical:12,
     flex:1
   },
   time: {
-    fontSize: 28,
-    fontWeight: "bold",
+    fontSize: 32,
+    fontWeight: '900',
     color: "white",
+    fontFamily:"Inter",
+    
+    
   },
   speed: {
-    fontSize: 16,
-    color: "lightgrey",
+    fontSize: 20,
+    fontWeight: '900',
+    color: "white",
+    fontFamily:"Inter",
   },
   statBoxRed: {
     flex: 1,
-    backgroundColor: "#E74C3C",
-    borderRadius: 12,
-    padding: 12,
+    backgroundColor: "#505050",
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 18,
+    alignItems:'center'
   },
   statBoxGrey: {
     flex: 1,
-    backgroundColor: "#444",
-    borderRadius: 12,
-    padding: 12,
+    backgroundColor: "#505050",
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 18,
+    alignItems:'center'
   },
   statValue: {
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 18,
+    fontWeight: "900",
+    fontFamily: 'Inter',
     color: "white",
   },
   statLabel: {
     fontSize: 12,
-    color: "lightgrey",
-  },
-  pauseBtn: {
-    backgroundColor: "#E74C3C",
-    paddingVertical: 24,
-    paddingHorizontal: 28,
-    borderRadius: 16,
+    color: "white",
+    opacity:0.8,
+    fontWeight: "600",
+    fontFamily: 'Inter',
+
   },
   pauseIcon: {
     fontSize: 28,
